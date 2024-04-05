@@ -28,6 +28,8 @@
 
 ### Introduction to Docker Image Building
 - Overview of Docker and its importance in modern development workflows.
+![image](https://github.com/kmihak/developWithDocker/assets/64592696/ddd395cb-4a85-4717-b06d-f0621cfb23ee)
+
 - Explanation of Docker images and their role in containerized environments.
 
 ### Components of a Docker Image
