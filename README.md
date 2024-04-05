@@ -29,8 +29,8 @@
 ### Introduction to Docker Image Building
 - Dockerfile to virtual machine.
 
+![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/9e8d4fe0-e47a-41df-a4cf-d617c3a89a68)
 
-![image](https://github.com/kmihak/developWithDocker/assets/64592696/ddd395cb-4a85-4717-b06d-f0621cfb23ee)
 1. Docker Build Command: `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 2. Docker run command: `docker run -it -rm ime:naziv /bin/bash`
 3. Docker Images Command: `docker images`
