@@ -29,7 +29,7 @@ FROM <image>[:<tag>] [AS <name>]
 RUN <command>
 COPY <src> <dest>
 WORKDIR /path/to/directory
-CMD ["executable", "param1", "param2"]
+CMD ["executable", "param1", "param2"]               # CMD: Specifies the default command to run when the container starts.
 ENTRYPOINT ["executable", "param1", "param2"]
 ENV <key> <value>
 ```
