@@ -85,6 +85,9 @@ ENV <key> <value>
    - Step5: develop
 
 ## Docker Image and Singularity
+Save your docker development image to file: ` docker save -o pathToFile/py-min.tar fe35d0fd6c24`
+
+
    ![Docker to singularity container](https://github.com/kmihak/developWithDocker/assets/64592696/069834fa-eccb-44b6-ab37-16baee93a847)
    
    
