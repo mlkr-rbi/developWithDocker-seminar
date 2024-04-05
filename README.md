@@ -99,8 +99,8 @@ ENV <key> <value>
    ```
    2. Build the Singularity Container: `singularity build your_container.simg singularity_definition.def`
    - Replace your_container.simg with the desired name for your Singularity container file.
-   3. Run the Singularity Container: `singularity exec "path/to/your_container.simg" python your_script.py`
-   Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script.
+   3. Run the Singularity Container: `singularity exec --nv "path/to/your_container.simg" python your_script.py`
+   Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda
 
 `singularity exec --nv your_container.simg python -c your_script.py`
 
