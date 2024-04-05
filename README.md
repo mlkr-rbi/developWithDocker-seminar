@@ -23,7 +23,8 @@
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/9e8d4fe0-e47a-41df-a4cf-d617c3a89a68)
 
    ### Components of a Docker Image
-   - Understanding the Dockerfile syntax and commands: ```
+   - Understanding the Dockerfile syntax and commands:
+```
 FROM <image>[:<tag>] [AS <name>]
 RUN <command>
 COPY <src> <dest>
@@ -31,7 +32,7 @@ WORKDIR /path/to/directory
 CMD ["executable", "param1", "param2"]
 ENTRYPOINT ["executable", "param1", "param2"]
 ENV <key> <value>
-     ```
+```
    - Image layers and their significance in optimizing Docker image builds.
    
    1. Docker Build Command: `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
