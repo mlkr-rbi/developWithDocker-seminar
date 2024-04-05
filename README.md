@@ -27,59 +27,65 @@
 ## Building a Docker Image
 
 ### Introduction to Docker Image Building
-- Dockerfile to virtual machine.
+- Dockerfile creates virtual machine
+- example minimal dockerfile in repo
 
 ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/9e8d4fe0-e47a-41df-a4cf-d617c3a89a68)
-
-1. Docker Build Command: `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
-2. Docker run command: `docker run -it -rm ime:naziv /bin/bash`
-3. Docker Images Command: `docker images`
-4. Docker PS Command: `docker ps`
-5. Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm container_id_or_name bash`
-
-
-- Explanation of Docker images and their role in containerized environments.
 
 ### Components of a Docker Image
 - Understanding the Dockerfile: syntax, commands, and best practices.
 - Image layers and their significance in optimizing Docker image builds.
 
+1. Docker Build Command: `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+2. Docker run command: `docker run -it --rm ime:naziv /bin/bash`
+3. Docker Images Command: `docker images`
+4. Docker PS Command: `docker ps`
+5. Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm container_id_or_name bash`
+6. Download image to docker: `docker pull pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime`
+
+
+- Some more basic operations with images & containers:
+1. **Delete Image Command:**
+   - Description: Removes a Docker image forcefully: ` docker image rm -f 229ffe904fb8`
+   - Resumes execution of a stopped Docker container: `docker start <container-name/ID>`
+   - Stop docker container `docker stop <container-name/ID>`
+
+2. **Tagging Image with Custom Repository and Tag:**
+   - Description: Tags an existing Docker image with a custom repository name and tag.
+   ```
+   docker image tag server:latest myname/name:otherName
+   docker image tag d583c3ac45fd myname/name:otherName
+   ```
+
 ### Building a Simple Docker Image
 - Step-by-step guide to creating a basic Dockerfile.
-- Incorporating dependencies and application code into the Docker image.
+Step1: create directory: start-vm-project
+Step2: dockerfile, requirements.txt, scriptToRun.py
+`docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
-### Docker Build Process
-- Explanation of the `docker build` command and its options.
-- Hands-on demonstration of building a Docker image from the Dockerfile.
-
-### Advanced Docker Image Techniques
-- Multi-stage builds for optimizing image size and build efficiency.
-- Utilizing build arguments and environment variables for flexibility.
-- Best practices for caching and layer optimization in Docker image builds.
-
-## Running a Docker Image
-
-### Launching Docker Containers
-- Overview of running Docker containers from Docker images.
-- Understanding container lifecycles and management.
-
-### Docker Run Command
-- Explanation of the `docker run` command and its various options.
-- Configuring container networking, volumes, and environment variables during container runtime.
-
-### Managing Docker Containers
-- Monitoring running containers using Docker CLI commands.
-- Interacting with containerized applications using Docker exec.
-
-### Container Persistence and Data Management
-- Understanding Docker volumes and persistent storage.
-- Strategies for managing data in Docker containers for reliability and scalability.
+### Run Docker Image
+Step3: Do i need virtual mounts: Yes: -v ~/home/directory:/remoteHome/workingDirectory
+Step4: JupyterLab
+`docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8889:8889 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory ime:tag jupyter lab --no-browser --ip=0.0.0.0 --port=8889`
+click on jupyter link to open jupyter lab
+Step5: develop
 
 ## Docker Image and Singularity
 
 ### Introduction to Singularity
-- Comparison between Docker and Singularity for containerization.
-- Use cases for Singularity in scientific computing and HPC environments.
+1. Create a Singularity Definition File (e.g., singularityDefinition.def):
+```
+Bootstrap: docker
+From: name:tag
+
+%post
+    # Execute your script inside the container
+    python your_script.py
+```
+2. Build the Singularity Container: `sudo singularity build your_container.simg singularity_definition.def`
+- Replace your_container.simg with the desired name for your Singularity container file.
+3. Run the Singularity Container: `singularity exec "path/to/your_container.simg" python your_script.py`
+Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script.
 
 ### Docker Image Compatibility with Singularity
 - Exploring compatibility issues and solutions when using Docker images with Singularity.
