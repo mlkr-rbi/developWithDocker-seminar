@@ -56,18 +56,24 @@
 
 ### Building a Simple Docker Image
 - Step-by-step guide to creating a basic Dockerfile.
+
 Step1: create directory: start-vm-project
+
 Step2: dockerfile, requirements.txt, scriptToRun.py
 `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
 ### Run Docker Image
+
 Step3: Do i need virtual mounts: Yes: -v ~/home/directory:/remoteHome/workingDirectory
+
 Step4: JupyterLab
 `docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8889:8889 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory ime:tag jupyter lab --no-browser --ip=0.0.0.0 --port=8889`
 click on jupyter link to open jupyter lab
 Step5: develop
 
 ## Docker Image and Singularity
+![Docker to singularity container](https://github.com/kmihak/developWithDocker/assets/64592696/069834fa-eccb-44b6-ab37-16baee93a847)
+
 
 1. Create a Singularity Definition File (e.g., singularityDefinition.def):
 ```
