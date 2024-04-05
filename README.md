@@ -88,7 +88,7 @@ ENV <key> <value>
    ![Docker to singularity container](https://github.com/kmihak/developWithDocker/assets/64592696/069834fa-eccb-44b6-ab37-16baee93a847)
    
    
-   1. Create a Singularity Definition File (e.g., singularityDefinition.def):
+   1. Create a Singularity Definition File (e.g., `singularityDefinition.def`):
    ```
    Bootstrap: docker
    From: name:tag
