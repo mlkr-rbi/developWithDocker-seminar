@@ -1,17 +1,11 @@
 # Develop With Docker
 # Table of Contents
-
-1. [Develop With Docker](#develop-with-docker)
+[Develop With Docker](#develop-with-docker)
    - [Building a Docker Image](#building-a-docker-image)
      - [Introduction to Docker Image Building](#introduction-to-docker-image-building)
      - [Components of a Docker Image](#components-of-a-docker-image)
      - [Building a Simple Docker Image](#building-a-simple-docker-image)
      - [Run Docker Image](#run-docker-image)
-   - [Running a Docker Image](#running-a-docker-image)
-     - [Launching Docker Containers](#launching-docker-containers)
-     - [Docker Run Command](#docker-run-command)
-     - [Managing Docker Containers](#managing-docker-containers)
-     - [Container Persistence and Data Management](#container-persistence-and-data-management)
    - [Docker Image and Singularity](#docker-image-and-singularity)
      - [Introduction to Singularity](#introduction-to-singularity)
      - [Docker Image Compatibility with Singularity](#docker-image-compatibility-with-singularity)
