@@ -25,12 +25,25 @@
    ### Components of a Docker Image
    - Understanding the Dockerfile syntax and commands:
 ```
+# FROM: Specifies the base image for the Dockerfile.
 FROM <image>[:<tag>] [AS <name>]
+
+# RUN: Executes commands in the Docker image. Makes image snapshot!
 RUN <command>
+
+# COPY: Copies files or directories from the host into the Docker image.
 COPY <src> <dest>
+
+# WORKDIR: Sets the working directory for subsequent instructions.
 WORKDIR /path/to/directory
-CMD ["executable", "param1", "param2"]               # CMD: Specifies the default command to run when the container starts.
+
+# CMD: Specifies the default command to run when the container starts.
+CMD ["executable", "param1", "param2"]
+
+# ENTRYPOINT: Specifies the command to run when the container starts, which cannot be overridden by CMD.
 ENTRYPOINT ["executable", "param1", "param2"]
+
+# ENV: Sets environment variables in the Docker image.
 ENV <key> <value>
 ```
    - Image layers and their significance in optimizing Docker image builds.
