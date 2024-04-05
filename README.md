@@ -6,8 +6,7 @@
      - [Introduction to Docker Image Building](#introduction-to-docker-image-building)
      - [Components of a Docker Image](#components-of-a-docker-image)
      - [Building a Simple Docker Image](#building-a-simple-docker-image)
-     - [Docker Build Process](#docker-build-process)
-     - [Advanced Docker Image Techniques](#advanced-docker-image-techniques)
+     - [Run Docker Image](#run-docker-image)
    - [Running a Docker Image](#running-a-docker-image)
      - [Launching Docker Containers](#launching-docker-containers)
      - [Docker Run Command](#docker-run-command)
@@ -19,10 +18,8 @@
    - [Development in Remote Docker Containers](#development-in-remote-docker-containers)
      - [Remote Docker Development Environment Setup](#remote-docker-development-environment-setup)
      - [Collaborative Development with Remote Docker Containers](#collaborative-development-with-remote-docker-containers)
-     - [Debugging and Troubleshooting in Remote Docker Environments](#debugging-and-troubleshooting-in-remote-docker-environments)
-     - [Security Considerations for Remote Docker Development](#security-considerations-for-remote-docker-development)
-
-# Develop With Docker
+     - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
+     - [Security](#security)
 
 ## Building a Docker Image
 
@@ -72,7 +69,6 @@ Step5: develop
 
 ## Docker Image and Singularity
 
-### Introduction to Singularity
 1. Create a Singularity Definition File (e.g., singularityDefinition.def):
 ```
 Bootstrap: docker
@@ -82,29 +78,20 @@ From: name:tag
     # Execute your script inside the container
     python your_script.py
 ```
-2. Build the Singularity Container: `sudo singularity build your_container.simg singularity_definition.def`
+2. Build the Singularity Container: `singularity build your_container.simg singularity_definition.def`
 - Replace your_container.simg with the desired name for your Singularity container file.
 3. Run the Singularity Container: `singularity exec "path/to/your_container.simg" python your_script.py`
 Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script.
 
-### Docker Image Compatibility with Singularity
-- Exploring compatibility issues and solutions when using Docker images with Singularity.
-- Converting Docker images to Singularity format.
-
-## Development in Remote Docker Containers
+## Development in Remote Docker Containers (TBD)
 
 ### Remote Docker Development Environment Setup
-- Overview of remote development workflows using Docker containers.
-- Configuring Docker for remote access and development.
+- SSH keys
 
 ### Collaborative Development with Remote Docker Containers
-- Using remote Docker containers for team collaboration and shared development environments.
-- Best practices for managing code and dependencies in remote Docker setups.
+- VSCODE ssha remote containers packages
 
-### Debugging and Troubleshooting in Remote Docker Environments
-- Strategies for debugging applications running in remote Docker containers.
-- Troubleshooting common issues encountered during remote development.
+### Developing in Remote Docker Environments
+- VSCODE in remote container
 
-### Security Considerations for Remote Docker Development
-- Best practices for securing remote Docker environments.
-- Implementing access controls and encryption for remote Docker connections.
+### Security
