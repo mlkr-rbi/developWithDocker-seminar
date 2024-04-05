@@ -102,6 +102,8 @@ ENV <key> <value>
    3. Run the Singularity Container: `singularity exec "path/to/your_container.simg" python your_script.py`
    Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script.
 
+`singularity exec --nv your_container.simg python -c your_script.py`
+
 ## Development in Remote Docker Containers (TBD)
 
 ### Remote Docker Development Environment Setup
