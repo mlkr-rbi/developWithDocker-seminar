@@ -27,8 +27,14 @@
 ## Building a Docker Image
 
 ### Introduction to Docker Image Building
-- Overview of Docker and its importance in modern development workflows.
+- Dockerfile to virtual machine.
 ![image](https://github.com/kmihak/developWithDocker/assets/64592696/ddd395cb-4a85-4717-b06d-f0621cfb23ee)
+Docker Build Command: `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+Docker run command: `docker run -it -rm ime:naziv /bin/bash`
+Docker Images Command: `docker images`
+Docker PS Command: `docker ps`
+Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm container_id_or_name bash`
+
 
 - Explanation of Docker images and their role in containerized environments.
 
