@@ -78,7 +78,7 @@ ENV <key> <value>
 
    ### Run Docker Image
    
-   - Step3: Do i need virtual mounts: Yes: -v ~/home/directory:/remoteHome/workingDirectory
+   - Step3: Do i need virtual mounts: Yes: `-v ~/home/directory:/remoteHome/workingDirectory`
    - Step4: JupyterLab: 
    `docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8889:8889 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory ime:tag jupyter lab --no-browser --ip=0.0.0.0 --port=8889`
    click on jupyter link to open jupyter lab
