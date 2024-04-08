@@ -91,25 +91,25 @@ ENV <key> <value>
       ```
 
    ### Building a Simple Docker Image
-   - Step-by-step guide to creating a basic docker image.
-      - Step 1: create directory: <your_path/start-vm-project/>
-      - Step 2: copy Dockerfile, requirements.txt, scriptToRun.py to directory.
-      - Step 3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+   Step-by-step guide to creating a basic docker image.
+   - Step 1: create directory: <your_path/start-vm-project/>
+   - Step 2: copy Dockerfile, requirements.txt, scriptToRun.py to directory.
+   - Step 3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
    ### Run Docker Image
-   - Step 3 **What do i need?**:
+   - Step 4 **What do i need?**:
       - a) virtual mounts: `-v <~/home/directory>:</remoteHome/workingDirectory>`,
       - b) GPUs to use for computing `--gpus all` vs `--gpus '"device=0,2"'`,
       - c) what is my working directory `-w <home/user/set/working/dir/in/container>`,
       - d) shared memory directory is limited to 64MB, but we increase this size since my application depends on this shared memory to 8GB `--shm-size=8g`,
       - e) port forwarding between container and "host machine" `-p 8888:8888`,
       - f) ...
-   - Step 4: JupyterLab in browser: 
+   - Step 5: JupyterLab in browser: 
    ```
 docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888
 ```
    click on jupyter link to open jupyter lab and develop. ! If jupyter lab is on a server change 127.0.0.1 with server ip or server name.
-   - Step 4': Run some script that needs all these flags:
+   - Step 5': Run some script that needs all these flags:
 ```
 docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> python <some_python_based_flags> my_script.py
 ```
