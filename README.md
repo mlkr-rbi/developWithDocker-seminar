@@ -99,8 +99,8 @@ Shows docker containers from **run** command using `docker ps`.
    
    - Step3: Do i need virtual mounts: Yes: `-v ~/home/directory:/remoteHome/workingDirectory`
    - Step4: JupyterLab: 
-   `docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8889:8889 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory ime:tag jupyter lab --no-browser --ip=0.0.0.0 --port=8889`
-   click on jupyter link to open jupyter lab
+   `docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888`
+   click on jupyter link to open jupyter lab, what gpus to use for computing `--gpus all` vs `--gpus '"device=0,2"'`, and `-w <home/user/set/working/dir/in/container`, and `--shm-size=8g` shared memory directory is limited to 64MB but, we increase this size since my application depend on this shared memory to 8GB, and `-p 8888:8888` is port forwarding between container and "host machine". 
    - Step5: develop
 
 ## Docker Image and Singularity
@@ -119,9 +119,9 @@ Save your docker development image to file: ` docker save -o pathToFile/py-min.t
        # Execute your script inside the container
        python your_script.py
    ```
-   2. Build the Singularity Container: `singularity build your_container.simg singularityfile.def`
-   - Replace your_container.simg with the desired name for your Singularity container file.
-   3. Run the Singularity Container: `singularity exec --nv "path/to/your_container.simg" python your_script.py`
+   2. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<py-min.tar>`
+   - Replace <py-min.tar> with the desired name for your docker image file.
+   3. Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
    Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda.
 
 `singularity exec --nv your_container.simg python -c your_script.py`
