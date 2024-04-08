@@ -32,7 +32,7 @@ Docker image is the first step to create your fully reproducible environment. Ba
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/0bdf12e7-08c6-48e3-b0a2-f9da519d3699)
 
    
-   *Where are docker commands applied and what do they do.*
+   *At what point are docker and singularity commands applied and what do they create.*
 
    - Understanding the **Dockerfile** syntax and commands:
 ```
