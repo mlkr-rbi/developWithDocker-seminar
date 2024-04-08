@@ -34,7 +34,7 @@ for group permissions. For complete server names checkout the department wiki pa
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/b56cb97a-57bc-4c43-a4b6-1b90c556210a)
 
    ### Components of a Docker Image
-   - Understanding the Dockerfile syntax and commands:
+   - Understanding the **Dockerfile** syntax and commands:
 ```
 # FROM: Specifies the base image for the Dockerfile.
 FROM <image>[:<tag>] [AS <name>]
@@ -71,7 +71,6 @@ ENV <key> <value>
 ![docker images](https://github.com/kmihak/developWithDocker/assets/64592696/af0b85ee-e6ff-4cfa-934b-0e861feb91f6)
 Show docker images from **build** command using: `docker images`.
 
-
 ![Show docker ps](https://github.com/kmihak/developWithDocker/assets/64592696/7bc454d4-0858-48e5-9c9b-18aa4e27b2dc)
 Shows docker containers from **run** command using `docker ps`.
 
@@ -106,11 +105,12 @@ Shows docker containers from **run** command using `docker ps`.
 ## Docker Image and Singularity
 Save your docker development image to file: ` docker save -o pathToFile/py-min.tar fe35d0fd6c24`
 
+   ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
 
-   ![Docker to singularity container](https://github.com/kmihak/developWithDocker/assets/64592696/069834fa-eccb-44b6-ab37-16baee93a847)
-   
-   
-   1. Create a Singularity Definition File (e.g., `singularityfile.def`):
+
+   1. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<py-min.tar>`
+   - Replace <py-min.tar> with the desired name for your docker image file. This command does not require sudo to create .simg singularity image.
+   2. Create a Singularity Definition File (e.g., `singularityfile.def`):
    ```
    Bootstrap: docker
    From: name:tag
@@ -119,8 +119,8 @@ Save your docker development image to file: ` docker save -o pathToFile/py-min.t
        # Execute your script inside the container
        python your_script.py
    ```
-   2. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<py-min.tar>`
-   - Replace <py-min.tar> with the desired name for your docker image file.
+   Using singularityfile.def requires singularity grou priveleges. Pull the image from docker hub repositories
+   
    3. Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
    Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda.
 
