@@ -124,7 +124,7 @@ Save your docker development image to file: `docker save -o <pathToFile/py-min.t
 
 Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`, 
 enter your password.
-Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can post your docker image to docker hub as well and create the container form there. 
+Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can post your docker image to [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) as well and create the container form there. 
 
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
    
@@ -136,7 +136,7 @@ Use gzip for large files for transfer between slow connections: `gzip py_min.tar
    2. Create a Singularity Definition File (e.g., `singularityfile.def`), pull the image from dockerhub repository:
    ```
    Bootstrap: docker
-   From: name:tag
+   From: name:tag # e.g. rstudio/rstudio-server-pro:1.2.5033-1, or r-base:4.3.3, or pytorch/pytorch:2.2.2-cuda12.1-cudnn8-devel(doesnt work on orthus or srce)
    
    %post
        # Execute your script inside the container
