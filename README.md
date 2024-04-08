@@ -33,6 +33,7 @@ Docker image is the first step to create your fully reproducible environment. Ba
 
    
    *At what point are docker and singularity commands applied and what do they create.*
+   
 Docker images are located online on [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) repository. After logging in, you can upload your image as well. In order to create an image we use **Dockerfile** and a set of standard commands. Understanding the **Dockerfile** syntax and commands:
 ```
 # # is the comment character
