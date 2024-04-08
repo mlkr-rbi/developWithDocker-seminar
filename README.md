@@ -14,6 +14,14 @@
      - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
      - [Security](#security)
 
+## Install Docker
+Linux: https://docs.docker.com/engine/install/ubuntu/
+Windows Docker Desktop: https://docs.docker.com/desktop/install/windows-install/
+Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-the-linux-windows-subsystem-in-windows-11/m-p/2701207
+   - Linux: https://docs.docker.com/engine/install/ubuntu/
+
+Macintosh: https://docs.docker.com/desktop/install/mac-install/
+
 ## Building a Docker Image
 
    ### Introduction to Docker Image Building
