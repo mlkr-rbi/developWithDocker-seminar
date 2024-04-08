@@ -21,7 +21,8 @@ Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-t
    - Linux: https://docs.docker.com/engine/install/ubuntu/
 
 Macintosh: https://docs.docker.com/desktop/install/mac-install/
-#### Use existing installation on one of the servers: bea, jane, abacus, ask system admin for group permissions
+
+Use existing installation on one of the servers: **bea, jane or abacus**, ask system admin for group permissions.
 
 ## Building a Docker Image
 
