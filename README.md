@@ -117,16 +117,14 @@ docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-
 ## Docker Image and Singularity
 Singularity (S) and docker images are compatible to create a Singularity image (.simg) 
 just save your existing docker image and push it to the Singularity server. 
-There you follow the instructions how to run jobs and instructions. 
-Singularity access: https://hybridscale.github.io/orthus/access and 
-https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima 
+Singularity available HPC servers access: (small) https://hybridscale.github.io/orthus/access and (BIG) https://wiki.srce.hr/pages/viewpage.action?pageId=8488260
 Singularity basic commands and description: https://wiki.srce.hr/display/RKI/Singularity
 
 Save your docker development image to file: `docker save -o <pathToFile/py-min.tar> <fe35d0fd6c24>`
 
 Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`, 
 enter your password.
-Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can pust your docker image to docker hub as well and create the container form there. 
+Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can post your docker image to docker hub as well and create the container form there. 
 
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
    
@@ -146,8 +144,8 @@ Use gzip for large files for transfer between slow connections: `gzip py_min.tar
    ```
    Using singularityfile.def requires singularity group priveleges.
    
-   3. Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
-   Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda.
+   3. **Use the proposed wayy of job scheduling when running the scripts in the server environment,** **https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima.** Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
+   Replace "path/to/your_container.simg" with the path to your Singularity container file and `your_script.py` with the name of your Python script. `--nv` flag gives singularity premissions to cuda.
 
 `singularity exec --nv your_container.simg python -c your_script.py`
 
