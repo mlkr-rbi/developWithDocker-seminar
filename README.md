@@ -22,7 +22,8 @@ Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-t
 
 Macintosh: https://docs.docker.com/desktop/install/mac-install/
 
-Use existing installation on one of the servers: **bea, jane or abacus**, ask system admin for group permissions.
+Use existing installation on one of the servers: **bea, jane or abacus**, ask system admin 
+for group permissions. For complete server names checkout the department wiki pages.
 
 ## Building a Docker Image
 
@@ -67,7 +68,12 @@ ENV <key> <value>
    5. Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm <container_id_or_name> bash`
    6. Download image to docker: `docker pull pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime`
    
-   ![image](https://github.com/kmihak/developWithDocker/assets/64592696/62c1483b-d2d6-4147-bbbc-af5fe86a1367)
+![docker images](https://github.com/kmihak/developWithDocker/assets/64592696/af0b85ee-e6ff-4cfa-934b-0e861feb91f6)
+Show docker images from **build** command using: `docker images`.
+
+
+![Show docker ps](https://github.com/kmihak/developWithDocker/assets/64592696/7bc454d4-0858-48e5-9c9b-18aa4e27b2dc)
+Shows docker containers from **run** command using `docker ps`.
 
    - Some more basic operations with images & containers:
    1. **Delete Image Command:**
