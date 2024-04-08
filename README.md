@@ -150,16 +150,58 @@ Use gzip for large files for transfer between slow connections: `gzip py_min.tar
    Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda.
 
 `singularity exec --nv your_container.simg python -c your_script.py`
+## Jobs to Son of Grid Engine (SGE)
+[Son of Grid Engine](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima)
 
 ## Development in Remote Docker Containers (TBD)
 
-### Remote Docker Development Environment Setup
-- SSH keys
+### Remote containers & SSH
+Step 1. 
+https://code.visualstudio.com/docs/remote/containers-tutorial
+vscode:extension/ms-vscode-remote.remote-containers 
+
+Step 2. https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
+Getting started
+You can launch a new instance of VS Code connected to WSL by opening a WSL terminal, navigating to the folder of your choice, and typing code .: create a folder named .devcontainer in yout development environment.
+
+Step 3. SSH In VS Code, run Remote-SSH: Open Configuration File... in the Command Palette (F1), select an SSH config file, and add (or modify) a host entry as follows: Add to config file:
+Host bea.zel.lo
+  HostName bea.zel.lo
+  User mkeber
+
+Create key and transfer to server in cmd administrator privelages:
+In Powershell administrator privileges to upload: `ssh-keygen -t rsa -b 4096`
+
+```
+$USER_AT_HOST="username@bea.zel.lo"
+$PUBKEYPATH="$HOME\.ssh\id_rsa.pub"
+
+$pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '${pubKey}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+```
+
+Add to config file:
+In VS Code, run Remote-SSH: Open Configuration File... use F1 button to open.
+```
+Host bea.zel.lo
+  HostName bea.zel.lo
+  User mkeber
+  IdentityFile ~/.ssh/id_rsa
+```
 
 ### Collaborative Development with Remote Docker Containers
-- VSCODE ssha remote containers packages
 
 ### Developing in Remote Docker Environments
-- VSCODE in remote container
+Devcontainer.json files and documentation
+Make separate directory “start_project” with files req.txt and Dockerfile and a directory “.devcontainer“ containing file devcontainer.json 
+Examples in the GitHub repository.
+   
+Documentation for devcontainer.json:
+https://containers.dev/implementors/json_reference/
+Examples vscode:
+https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container
+Developing on a remote host:
+https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication
+Working Tourtorial and Examples:
+https://leimao.github.io/blog/VS-Code-Development-Remote-Host-Docker/ 
 
 ### Security
