@@ -30,7 +30,7 @@ Docker image is the first step to create your fully reproducible environment. Ba
    - Dockerfile contains procedure/code to build a docker image, 
    - Examples of minimal Dockerfile files are in this GitHub repository.
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/35f654ef-e372-4a3f-9306-1dfd50fa2a9f)
-   Where are docker commands applied and what do they do.
+   *Where are docker commands applied and what do they do.*
 
    - Understanding the **Dockerfile** syntax and commands:
 ```
@@ -69,10 +69,10 @@ ENV <key> <value>
    7. ...
    
 ![docker images](https://github.com/kmihak/developWithDocker/assets/64592696/af0b85ee-e6ff-4cfa-934b-0e861feb91f6)
-Show docker images from **build** command using: `docker images`.
+*Show docker images from **build** command using: `docker images`.*
 
 ![Show docker ps](https://github.com/kmihak/developWithDocker/assets/64592696/7bc454d4-0858-48e5-9c9b-18aa4e27b2dc)
-Shows docker containers from **run** command using `docker ps`.
+*Shows docker containers from **run** command using `docker ps`.*
 
    - Some more basic operations with images & containers:
    1. **Delete Image Command:**
@@ -126,6 +126,7 @@ enter your password.
 Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can pust your docker image to docker hub as well and create the container form there. 
 
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
+   *How to go about creating docker image and deploy it on the Singularity server.*
 
 
    1. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<py-min.tar>`
