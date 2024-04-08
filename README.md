@@ -106,6 +106,8 @@ Shows docker containers from **run** command using `docker ps`.
 ## Docker Image and Singularity
 Save your docker development image to file: ` docker save -o pathToFile/py-min.tar fe35d0fd6c24`
 
+Sync image to the server with singularity: `rsync -avP DOCKERS/scriptToRunPython/py-min.tar <username>@<server.hr>:/home/user/path/to_file/`
+
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
 
 
