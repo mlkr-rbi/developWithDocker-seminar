@@ -150,8 +150,11 @@ Use gzip for large files for transfer between slow connections: `gzip py_min.tar
    Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda.
 
 `singularity exec --nv your_container.simg python -c your_script.py`
+
 ## Jobs to Son of Grid Engine (SGE)
-[Son of Grid Engine](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima)
+
+Croatian version how to run jobs with [CRO Son of Grid Engine](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima)
+English version how to run jobs with [ENG Son of Grid Engine](https://hybridscale.github.io/orthus/running)
 
 ## Development in Remote Docker Containers (TBD)
 
