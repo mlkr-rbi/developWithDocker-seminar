@@ -14,7 +14,7 @@
      - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
      - [Security](#security)
 
-## Install Docker (Locally)
+## Install Docker (Locally, Linux, Windows, WSL2, Macintosh)
 Linux: https://docs.docker.com/engine/install/ubuntu/
 Windows Docker Desktop: https://docs.docker.com/desktop/install/windows-install/
 Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-the-linux-windows-subsystem-in-windows-11/m-p/2701207
