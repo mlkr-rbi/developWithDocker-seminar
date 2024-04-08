@@ -22,14 +22,14 @@ Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-t
 
 Macintosh: https://docs.docker.com/desktop/install/mac-install/
 
-Use existing installation on one of the servers: **bea, jane or abacus**, ask system admin 
+Use existing installation on one of the servers: **bea.zel.lo, or abacus1.zel.lo**, ask system admin 
 for group permissions. For complete server names checkout the department wiki pages http://zel.irb.hr/wiki/tutorials:supercomputers.
 
 ## Building a Docker Image
 
    ### Introduction to Docker Image Building
    - Dockerfile is a procedure/code to build docker image 
-   - Examples of minimal Dockerfile files are in this github repo
+   - Examples of minimal Dockerfile files are in this GitHub repository
    
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/b56cb97a-57bc-4c43-a4b6-1b90c556210a)
 
@@ -62,7 +62,7 @@ ENV <key> <value>
 ...
 ```
 ### Basic Docker commands for navigation
-   1. docker build: `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`, creates builds the image from Dockrefile,
+   1. docker build: `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`, creates builds the image from Dockerfile,
    2. docker run: `docker run -it --rm <ime>:<naziv> /bin/bash`, creates a container = virtual machine, opens linux terminal, 
    3. docker images: `docker images` - shows table of pulled and built images,
    4. docker ps: `docker ps` - shows table of active containers (inactive containers are dangling somewhere within the system),
@@ -91,14 +91,14 @@ Shows docker containers from **run** command using `docker ps`.
 
    ### Building a Simple Docker Image
    - Step-by-step guide to creating a basic docker image.
-      - Step1: create directory: <your_path/start-vm-project/>
-      - Step2: copy Dockerfile, requirements.txt, scriptToRun.py to directory.
-      - Step3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+      - Step 1: create directory: <your_path/start-vm-project/>
+      - Step 2: copy Dockerfile, requirements.txt, scriptToRun.py to directory.
+      - Step 3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
    ### Run Docker Image
    - Step3: **Do i need?**
       - a) virtual mounts: `-v ~/home/directory:/remoteHome/workingDirectory`,
-      - b) gpus to use for computing `--gpus all` vs `--gpus '"device=0,2"'`,
+      - b) GPUs to use for computing `--gpus all` vs `--gpus '"device=0,2"'`,
       - c) what is my working directory `-w <home/user/set/working/dir/in/container`,
       - d) shared memory directory is limited to 64MB, but we increase this size since my application depends on this shared memory to 8GB `--shm-size=8g`,
       - e) port forwarding between container and "host machine" `-p 8888:8888`,
@@ -114,6 +114,10 @@ docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-
 ```
 
 ## Docker Image and Singularity
+Singularity (S) and docker images are compatible to create a S image just use your existing docker image save it and push it to the S server. There you follow the instructions how to run jobs and instructions. 
+Singularity access: https://hybridscale.github.io/orthus/access and https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima 
+Singularity basic commands and description: https://wiki.srce.hr/display/RKI/Singularity
+
 Save your docker development image to file: ` docker save -o <pathToFile/py-min.tar> <fe35d0fd6c24>`
 
 Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`
