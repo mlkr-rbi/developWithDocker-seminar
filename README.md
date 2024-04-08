@@ -1,5 +1,6 @@
 # Develop With Docker
 ## Table of Contents
+   - [Install Docker (Locally, Linux, ...)](#install-docker-(locally,-linux,-windows,-WSL2,-macintosh))
    - [Building a Docker Image](#building-a-docker-image)
      - [Introduction to Docker Image Building](#introduction-to-docker-image-building)
      - [Components of a Docker Image](#components-of-a-docker-image)
