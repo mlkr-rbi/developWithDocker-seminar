@@ -15,28 +15,29 @@
      - [Security](#security)
 
 ## Install Docker (Locally, Linux, Windows, WSL2, Macintosh)
-Linux: https://docs.docker.com/engine/install/ubuntu/
-Windows Docker Desktop: https://docs.docker.com/desktop/install/windows-install/
-Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-the-linux-windows-subsystem-in-windows-11/m-p/2701207
+Follow the tutorial to install on your machine: 
+- Linux - https://docs.docker.com/engine/install/ubuntu/,
+- Windows Docker Desktop -  https://docs.docker.com/desktop/install/windows-install/
+- Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-the-linux-windows-subsystem-in-windows-11/m-p/2701207
    - Linux: https://docs.docker.com/engine/install/ubuntu/
-
-Macintosh: https://docs.docker.com/desktop/install/mac-install/
+- Macintosh: https://docs.docker.com/desktop/install/mac-install/
 
 Use existing installation on one of the servers: **bea.zel.lo, or abacus1.zel.lo**, ask system admin 
 for group permissions. For complete server names checkout the department wiki pages http://zel.irb.hr/wiki/tutorials:supercomputers.
 
 ## Building a Docker Image
+Docker image is the first step to create your fully reproducible environment. Basic setup is by using `Dockerfile`. 
 
    ### Introduction to Docker Image Building
-   - Dockerfile is a procedure/code to build docker image 
-   - Examples of minimal Dockerfile files are in this GitHub repository
+   - Dockerfile contains procedure/code to build a docker image, 
+   - Examples of minimal Dockerfile files are in this GitHub repository.
    
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/b56cb97a-57bc-4c43-a4b6-1b90c556210a)
 
    ### Components of a Docker Image
    - Understanding the **Dockerfile** syntax and commands:
 ```
-# # is the character for commenting 
+# # is the comment character
 
 # FROM: Specifies the base image for the Dockerfile.
 FROM <image>[:<tag>] [AS <name>]
@@ -61,9 +62,9 @@ ENV <key> <value>
 
 ...
 ```
-### Basic Docker commands for navigation
+### Basic Docker commands
    1. docker build: `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`, creates builds the image from Dockerfile,
-   2. docker run: `docker run -it --rm <ime>:<naziv> /bin/bash`, creates a container = virtual machine, opens linux terminal, 
+   2. docker run: `docker run -it --rm <ime>:<naziv> /bin/bash`, creates a container ~ virtual machine, opens linux terminal, 
    3. docker images: `docker images` - shows table of pulled and built images,
    4. docker ps: `docker ps` - shows table of active containers (inactive containers are dangling somewhere within the system),
    5. docker exec: `docker exec -u 0 -g 0 -it rm <container_id_or_name> bash`, existing container management,
@@ -96,19 +97,19 @@ Shows docker containers from **run** command using `docker ps`.
       - Step 3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
    ### Run Docker Image
-   - Step3: **Do i need?**
-      - a) virtual mounts: `-v ~/home/directory:/remoteHome/workingDirectory`,
+   - Step 3 **What do i need?**:
+      - a) virtual mounts: `-v <~/home/directory>:</remoteHome/workingDirectory>`,
       - b) GPUs to use for computing `--gpus all` vs `--gpus '"device=0,2"'`,
-      - c) what is my working directory `-w <home/user/set/working/dir/in/container`,
+      - c) what is my working directory `-w <home/user/set/working/dir/in/container>`,
       - d) shared memory directory is limited to 64MB, but we increase this size since my application depends on this shared memory to 8GB `--shm-size=8g`,
       - e) port forwarding between container and "host machine" `-p 8888:8888`,
       - f) ...
-   - Step4: JupyterLab in browser: 
+   - Step 4: JupyterLab in browser: 
    ```
 docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888
 ```
    click on jupyter link to open jupyter lab and develop. ! If jupyter lab is on a server change 127.0.0.1 with server ip or server name.
-   - Step4': Run some script that needs all these flags:
+   - Step 4': Run some script that needs all these flags:
 ```
 docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> python <some_python_based_flags> my_script.py
 ```
