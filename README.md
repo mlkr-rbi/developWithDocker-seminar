@@ -136,7 +136,10 @@ Use gzip for large files for transfer between slow connections: `gzip py_min.tar
 
    1. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<py-min.tar>`
       - Replace <py-min.tar> with the desired name for your docker image file. This command does not require sudo to create .simg singularity image.
-   2. Create a Singularity Definition File (e.g., `singularityfile.def`), pull the image from dockerhub repository:
+   2. **Use the proposed way of job scheduling when running the scripts in the server environment,** **https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima.** Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
+   Replace "path/to/your_container.simg" with the path to your Singularity container file and `your_script.py` with the name of your Python script. `--nv` flag gives singularity premissions to cuda. `singularity exec --nv your_container.simg python -c your_script.py`
+
+Using a Singularity Definition File (e.g., `singularityfile.def`), pull the image from dockerhub repository:
    ```
    Bootstrap: docker
    From: name:tag # e.g. rstudio/rstudio-server-pro:1.2.5033-1, or r-base:4.3.3, or pytorch/pytorch:2.2.2-cuda12.1-cudnn8-devel(doesnt work on orthus or srce)
@@ -145,12 +148,11 @@ Use gzip for large files for transfer between slow connections: `gzip py_min.tar
        # Execute your script inside the container
        python your_script.py
    ```
-   Using singularityfile.def requires singularity group priveleges.
+Create the .simg: `singularity build sPyCuda.simg singularityfile.def`. Using singularityfile.def requires singularity group priveleges (sudo). Again follow the rules of [job scheduling srce](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima) or [job scheduling orthus](https://hybridscale.github.io/orthus/running) both HPCs use SGE (Sons of Grid Engine) and execute some script from the created .simg: `singularity exec --nv <sPyCuda.simg> python <cnn_mnist.py>`
    
-   3. **Use the proposed wayy of job scheduling when running the scripts in the server environment,** **https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima.** Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
-   Replace "path/to/your_container.simg" with the path to your Singularity container file and `your_script.py` with the name of your Python script. `--nv` flag gives singularity premissions to cuda.
 
-`singularity exec --nv your_container.simg python -c your_script.py`
+
+
 
 ## Jobs to Son of Grid Engine (SGE)
 
