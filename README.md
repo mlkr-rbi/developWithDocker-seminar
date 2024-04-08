@@ -66,7 +66,7 @@ ENV <key> <value>
    3. Docker Images Command: `docker images`
    4. Docker PS Command: `docker ps`
    5. Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm <container_id_or_name> bash`
-   6. Download image to docker: `docker pull pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime`
+   6. Download image to docker: `pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime`
    
 ![docker images](https://github.com/kmihak/developWithDocker/assets/64592696/af0b85ee-e6ff-4cfa-934b-0e861feb91f6)
 Show docker images from **build** command using: `docker images`.
