@@ -29,7 +29,8 @@ for group permissions. For complete server names checkout the department wiki pa
 Docker image is the first step to create your fully reproducible environment. Basic setup is by using `Dockerfile`. 
    - Dockerfile contains procedure/code to build a docker image, 
    - Examples of minimal Dockerfile files are in this GitHub repository.
-   ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/35f654ef-e372-4a3f-9306-1dfd50fa2a9f)
+   ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/0bdf12e7-08c6-48e3-b0a2-f9da519d3699)
+
    
    *Where are docker commands applied and what do they do.*
 
@@ -126,7 +127,8 @@ Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min
 enter your password.
 Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can post your docker image to [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) as well and create the container form there. 
 
-   ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
+   ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/b463fa8d-eefc-411b-aa9e-e4252ebb732b)
+
    
    *How to go about creating docker image and deploy it on the Singularity server.*
 
