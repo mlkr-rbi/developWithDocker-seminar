@@ -33,13 +33,13 @@ Docker image is the first step to create your fully reproducible environment. Ba
 
    
    *At what point are docker and singularity commands applied and what do they create.*
-
-   - Understanding the **Dockerfile** syntax and commands:
+Docker images are located online on [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) repository. After logging in, you can upload your image as well. In order to create an image we use **Dockerfile** and a set of standard commands. Understanding the **Dockerfile** syntax and commands:
 ```
 # # is the comment character
 
 # FROM: Specifies the base image for the Dockerfile.
-FROM <image>[:<tag>] [AS <name>]
+FROM <image>[:<tag>] [AS <name>] # e.g. rstudio/rstudio-server-pro:1.2.5033-1, or pytorch/pytorch:2.2.2-cuda12.1-cudnn8-devel
+# cuda > 11.3 doesnt work on srce based on documentation (check) and cuda > 11.6 doesn't work on orthus
 
 # RUN: Executes commands in the Docker image. Makes image snapshot.
 RUN <command>
@@ -58,9 +58,9 @@ ENTRYPOINT ["executable", "param1", "param2"]
 
 # ENV: Sets environment variables in the Docker image.
 ENV <key> <value>
-
 ...
 ```
+
 ### Basic Docker Commands
    1. docker build: `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`, creates builds the image from Dockerfile,
    2. docker run: `docker run -it --rm <ime>:<naziv> /bin/bash`, creates a container ~ virtual machine, opens linux terminal, 
@@ -109,10 +109,10 @@ ENV <key> <value>
    ```
 docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888
 ```
-   click on jupyter link to open jupyter lab and develop. ! If jupyter lab is on a server change 127.0.0.1 with server ip or server name.
+   click on jupyter link to open jupyter lab and develop. ! If jupyter lab is on a server change `127.0.0.1` to `<server ip>` or `server name`.
    - Step 5': Run some script that needs all these flags:
 ```
-docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> python <some_python_based_flags> my_script.py
+docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> python <script_based_flags> my_script.py
 ```
 
 ## Docker Image and Singularity
@@ -125,7 +125,7 @@ Save your docker development image to file: `docker save -o <pathToFile/py-min.t
 
 Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`, 
 enter your password.
-Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can post your docker image to [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) as well and create the container form there. 
+Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, or post your docker image to [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) as well and create the container form there. 
 
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/b463fa8d-eefc-411b-aa9e-e4252ebb732b)
 
