@@ -31,7 +31,7 @@ for group permissions. For complete server names checkout the department wiki pa
    - Dockerfile creates virtual machine
    - example minimal dockerfile in repo
    
-   ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/9e8d4fe0-e47a-41df-a4cf-d617c3a89a68)
+   ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/b56cb97a-57bc-4c43-a4b6-1b90c556210a)
 
    ### Components of a Docker Image
    - Understanding the Dockerfile syntax and commands:
