@@ -2,7 +2,7 @@
 ## Table of Contents
    - [Install Docker (Locally, Linux, ...)](#install-docker-(locally,-linux,-windows,-WSL2,-macintosh))
    - [Building a Docker Image](#building-a-docker-image)
-     - [Components of a Docker Image](#components-of-a-docker-image)
+     - [Basic Docker Commands](#basic-docker-commands)
      - [Building a Simple Docker Image](#building-a-simple-docker-image)
      - [Run Docker Image](#run-docker-image)
    - [Docker Image and Singularity](#docker-image-and-singularity)
@@ -29,10 +29,9 @@ for group permissions. For complete server names checkout the department wiki pa
 Docker image is the first step to create your fully reproducible environment. Basic setup is by using `Dockerfile`. 
    - Dockerfile contains procedure/code to build a docker image, 
    - Examples of minimal Dockerfile files are in this GitHub repository.
-   ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/b56cb97a-57bc-4c43-a4b6-1b90c556210a)
+   ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/35f654ef-e372-4a3f-9306-1dfd50fa2a9f)
    Where are docker commands applied and what do they do.
 
-   ### Components of a Docker Image
    - Understanding the **Dockerfile** syntax and commands:
 ```
 # # is the comment character
@@ -60,7 +59,7 @@ ENV <key> <value>
 
 ...
 ```
-### Basic Docker commands
+### Basic Docker Commands
    1. docker build: `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`, creates builds the image from Dockerfile,
    2. docker run: `docker run -it --rm <ime>:<naziv> /bin/bash`, creates a container ~ virtual machine, opens linux terminal, 
    3. docker images: `docker images` - shows table of pulled and built images,
@@ -113,15 +112,18 @@ docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-
 ```
 
 ## Docker Image and Singularity
-Singularity (S) and docker images are compatible to create a S image just use your existing docker image save it and push it to the S server. There you follow the instructions how to run jobs and instructions. 
-Singularity access: https://hybridscale.github.io/orthus/access and https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima 
+Singularity (S) and docker images are compatible to create a Singularity image (.simg) 
+just save your existing docker image and push it to the Singularity server. 
+There you follow the instructions how to run jobs and instructions. 
+Singularity access: https://hybridscale.github.io/orthus/access and 
+https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima 
 Singularity basic commands and description: https://wiki.srce.hr/display/RKI/Singularity
 
-Save your docker development image to file: ` docker save -o <pathToFile/py-min.tar> <fe35d0fd6c24>`
+Save your docker development image to file: `docker save -o <pathToFile/py-min.tar> <fe35d0fd6c24>`
 
-Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`
-
-Use gzip: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`
+Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`, 
+enter your password.
+Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, you can pust your docker image to docker hub as well and create the container form there. 
 
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/c1a04438-cdf2-4243-a39e-0f69554d6be6)
 
