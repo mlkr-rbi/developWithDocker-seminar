@@ -23,7 +23,7 @@ Windows WSL2: https://techcommunity.microsoft.com/t5/windows-11/how-to-install-t
 Macintosh: https://docs.docker.com/desktop/install/mac-install/
 
 Use existing installation on one of the servers: **bea, jane or abacus**, ask system admin 
-for group permissions. For complete server names checkout the department wiki pages.
+for group permissions. For complete server names checkout the department wiki pages http://zel.irb.hr/wiki/tutorials:supercomputers.
 
 ## Building a Docker Image
 
