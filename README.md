@@ -88,18 +88,19 @@ Shows docker containers from **run** command using `docker ps`.
       ```
 
    ### Building a Simple Docker Image
-   - Step-by-step guide to creating a basic Dockerfile.
+   - Step-by-step guide to creating a basic docker image.
    
    - Step1: create directory: start-vm-project
-   - Step2: dockerfile, requirements.txt, scriptToRun.py
-   `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+   - Step2: dockerfile, requirements.txt, scriptToRun.py to directory.
+     
+   `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
    ### Run Docker Image
    
    - Step3: Do i need virtual mounts: Yes: `-v ~/home/directory:/remoteHome/workingDirectory`
    - Step4: JupyterLab: 
    `docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888`
-   click on jupyter link to open jupyter lab, what gpus to use for computing `--gpus all` vs `--gpus '"device=0,2"'`, and `-w <home/user/set/working/dir/in/container`, and `--shm-size=8g` shared memory directory is limited to 64MB but, we increase this size since my application depend on this shared memory to 8GB, and `-p 8888:8888` is port forwarding between container and "host machine". 
+   click on jupyter link to open jupyter lab, what gpus to use for computing `--gpus all` vs `--gpus '"device=0,2"'`, and `-w <home/user/set/working/dir/in/container`, and `--shm-size=8g` shared memory directory is limited to 64MB, but we increase this size since my application depend on this shared memory to 8GB, and `-p 8888:8888` is port forwarding between container and "host machine". 
    - Step5: develop
 
 ## Docker Image and Singularity
