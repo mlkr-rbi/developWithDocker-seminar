@@ -96,7 +96,7 @@ ENV <key> <value>
    Step-by-step guide to creating a basic docker image.
    - Step 1: create directory: <your_path/start-vm-project/>
    - Step 2: copy Dockerfile, requirements.txt, scriptToRun.py to directory.
-   - Step 3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+   - Step 3: build the image `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
    ### Run Docker Image
    - Step 4 **What do i need?**:
