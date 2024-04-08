@@ -1,5 +1,5 @@
 # Develop With Docker
-# Table of Contents
+## Table of Contents
    - [Building a Docker Image](#building-a-docker-image)
      - [Introduction to Docker Image Building](#introduction-to-docker-image-building)
      - [Components of a Docker Image](#components-of-a-docker-image)
@@ -53,28 +53,31 @@ ENTRYPOINT ["executable", "param1", "param2"]
 
 # ENV: Sets environment variables in the Docker image.
 ENV <key> <value>
+
+...
 ```
    - Image layers and their significance in optimizing Docker image builds.
    
-   1. Docker Build Command: `docker build -t ime:naziv --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
-   2. Docker run command: `docker run -it --rm ime:naziv /bin/bash`
+   1. Docker Build Command: `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+   2. Docker run command: `docker run -it --rm <ime>:<naziv> /bin/bash`
    3. Docker Images Command: `docker images`
    4. Docker PS Command: `docker ps`
-   5. Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm container_id_or_name bash`
+   5. Root Management Command to Open Docker Container Bash: `docker exec -u 0 -g 0 -it rm <container_id_or_name> bash`
    6. Download image to docker: `docker pull pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime`
    
-   
+   ![image](https://github.com/kmihak/developWithDocker/assets/64592696/62c1483b-d2d6-4147-bbbc-af5fe86a1367)
+
    - Some more basic operations with images & containers:
    1. **Delete Image Command:**
-      - Description: Removes a Docker image forcefully: ` docker image rm -f 229ffe904fb8`
+      - Description: Removes a Docker image forcefully: `docker image rm -f <f8fcad3b680c>`
       - Resumes execution of a stopped Docker container: `docker start <container-name/ID>`
       - Stop docker container `docker stop <container-name/ID>`
    
    2. **Tagging Image with Custom Repository and Tag:**
       - Description: Tags an existing Docker image with a custom repository name and tag.
       ```
-      docker image tag server:latest myname/name:otherName
-      docker image tag d583c3ac45fd myname/name:otherName
+      docker image tag server:latest <myname/name>:<otherName>
+      docker image tag d583c3ac45fd <myname/name>:<otherName>
       ```
 
    ### Building a Simple Docker Image
@@ -99,7 +102,7 @@ Save your docker development image to file: ` docker save -o pathToFile/py-min.t
    ![Docker to singularity container](https://github.com/kmihak/developWithDocker/assets/64592696/069834fa-eccb-44b6-ab37-16baee93a847)
    
    
-   1. Create a Singularity Definition File (e.g., `singularityDefinition.def`):
+   1. Create a Singularity Definition File (e.g., `singularityfile.def`):
    ```
    Bootstrap: docker
    From: name:tag
@@ -108,10 +111,10 @@ Save your docker development image to file: ` docker save -o pathToFile/py-min.t
        # Execute your script inside the container
        python your_script.py
    ```
-   2. Build the Singularity Container: `singularity build your_container.simg singularity_definition.def`
+   2. Build the Singularity Container: `singularity build your_container.simg singularityfile.def`
    - Replace your_container.simg with the desired name for your Singularity container file.
    3. Run the Singularity Container: `singularity exec --nv "path/to/your_container.simg" python your_script.py`
-   Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda
+   Replace "path/to/your_container.simg" with the path to your Singularity container file and your_script.py with the name of your Python script. `--nv` flag gives premissions to cuda.
 
 `singularity exec --nv your_container.simg python -c your_script.py`
 
