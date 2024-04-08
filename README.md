@@ -76,7 +76,7 @@ Shows docker containers from **run** command using `docker ps`.
 
    - Some more basic operations with images & containers:
    1. **Delete Image Command:**
-      - Description: Removes a Docker image forcefully: `docker image rm -f <f8fcad3b680c>`
+      - Removes a Docker image forcefully: `docker image rm -f <f8fcad3b680c>`
       - Resumes execution of a stopped Docker container: `docker start <container-name/ID>`
       - Stop docker container `docker stop <container-name/ID>`
    
@@ -89,19 +89,27 @@ Shows docker containers from **run** command using `docker ps`.
 
    ### Building a Simple Docker Image
    - Step-by-step guide to creating a basic docker image.
-   
-   - Step1: create directory: start-vm-project
-   - Step2: dockerfile, requirements.txt, scriptToRun.py to directory.
-     
-   `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
+      - Step1: create directory: <your_pat/start-vm-project/>
+      - Step2: copy dockerfile, requirements.txt, scriptToRun.py to directory.
+      - Step3: Build the image and `docker build -t <ime>:<naziv> --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .`
 
    ### Run Docker Image
-   
-   - Step3: Do i need virtual mounts: Yes: `-v ~/home/directory:/remoteHome/workingDirectory`
-   - Step4: JupyterLab: 
-   `docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888`
-   click on jupyter link to open jupyter lab, what gpus to use for computing `--gpus all` vs `--gpus '"device=0,2"'`, and `-w <home/user/set/working/dir/in/container`, and `--shm-size=8g` shared memory directory is limited to 64MB, but we increase this size since my application depend on this shared memory to 8GB, and `-p 8888:8888` is port forwarding between container and "host machine". 
-   - Step5: develop
+   - Step3: **Do i need?**
+      - a) virtual mounts: Yes: `-v ~/home/directory:/remoteHome/workingDirectory`,
+      - b) gpus to use for computing `--gpus all` vs `--gpus '"device=0,2"'`,
+      - c) what is my working directory `-w <home/user/set/working/dir/in/container`,
+      - d) shared memory directory is limited to 64MB, but we increase this size since my application depend on this shared memory to 8GB `--shm-size=8g`,
+      - e) port forwarding between container and "host machine" `-p 8888:8888`,
+      - f) ...
+   - Step4: JupyterLab in browser: 
+   ```
+docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> jupyter lab --no-browser --ip=0.0.0.0 --port=8888
+```
+   click on jupyter link to open jupyter lab and develop.
+   - Step4': Run some script that needs all these flags:
+```
+docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-size=8g -p 8888:8888 -v ~/homeWorkDirectory:/home/user/remoteWorkDirectory -w /home/user/remoteWorkDirectory <ime>:<tag> python <some_python_based_flags> my_script.py
+```
 
 ## Docker Image and Singularity
 Save your docker development image to file: ` docker save -o pathToFile/py-min.tar fe35d0fd6c24`
