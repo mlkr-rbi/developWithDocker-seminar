@@ -2,7 +2,6 @@
 ## Table of Contents
    - [Install Docker (Locally, Linux, ...)](#install-docker-(locally,-linux,-windows,-WSL2,-macintosh))
    - [Building a Docker Image](#building-a-docker-image)
-     - [Introduction to Docker Image Building](#introduction-to-docker-image-building)
      - [Components of a Docker Image](#components-of-a-docker-image)
      - [Building a Simple Docker Image](#building-a-simple-docker-image)
      - [Run Docker Image](#run-docker-image)
@@ -28,12 +27,10 @@ for group permissions. For complete server names checkout the department wiki pa
 
 ## Building a Docker Image
 Docker image is the first step to create your fully reproducible environment. Basic setup is by using `Dockerfile`. 
-
-   ### Introduction to Docker Image Building
    - Dockerfile contains procedure/code to build a docker image, 
    - Examples of minimal Dockerfile files are in this GitHub repository.
-   
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/b56cb97a-57bc-4c43-a4b6-1b90c556210a)
+   Where are docker commands applied and what do they do.
 
    ### Components of a Docker Image
    - Understanding the **Dockerfile** syntax and commands:
