@@ -22,7 +22,7 @@ Follow the tutorial to install on your machine:
    - Linux: https://docs.docker.com/engine/install/ubuntu/
 - Macintosh: https://docs.docker.com/desktop/install/mac-install/
 
-Use existing installation on one of the servers: **bea.zel.lo, or abacus1.zel.lo**, ask system admin 
+Use existing installation on one of the servers: **bea.zel.lo, or abacus1.zel.lo, or jane.zel.lo**, ask system admin 
 for group permissions. For complete server names checkout the department wiki pages http://zel.irb.hr/wiki/tutorials:supercomputers.
 
 ## Building a Docker Image
