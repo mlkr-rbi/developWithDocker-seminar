@@ -6,10 +6,10 @@
      - [Building a Simple Docker Image](#building-a-simple-docker-image)
      - [Run Docker Image](#run-docker-image)
    - [Docker Image and Singularity](#docker-image-and-singularity)
-     - [Introduction to Singularity](#introduction-to-singularity)
+     - [Introduction to Lab Resources and Additional Guides](#introduction-to-lab-resources-and-additional-guides)
      - [Docker Image Compatibility with Singularity](#docker-image-compatibility-with-singularity)
-     - [Jobs to Son of Grid Engine (SGE)](#Jobs-to-Son-of-Grid-Engine-(SGE))
-   - [Development in Remote Docker Containers](#development-in-remote-docker-containers)
+     - [Jobs to Son of Grid Engine (SGE)](#Jobs-to-Son-of-Grid-Engine-sge)
+   - [Development in Remote Docker Containers TBD](#development-in-remote-docker-containers-tbd)
      - [Remote Docker Development Environment Setup](#remote-docker-development-environment-setup)
      - [Collaborative Development with Remote Docker Containers](#collaborative-development-with-remote-docker-containers)
      - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
@@ -118,25 +118,26 @@ docker run -it --rm --gpus all --user $(id -u):$(id -g) --group-add users --shm-
 ```
 
 ## Docker Image and Singularity
+### Introduction to Lab Resources and Additional Guides
 Singularity (S) and docker images are compatible to create a Singularity image (.simg) 
 just save your existing docker image and push it to the Singularity server. 
 Singularity available HPC servers access: (small) https://hybridscale.github.io/orthus/access and (BIG) https://wiki.srce.hr/pages/viewpage.action?pageId=8488260
 Singularity basic commands and description: https://wiki.srce.hr/display/RKI/Singularity
 
-Save your docker development image to file: `docker save -o <pathToFile/py-min.tar> <fe35d0fd6c24>`
-
-Sync image to the server with singularity: `rsync -avP <path/to_directory/py-min.tar> <username>@<server>:/home/user/path/to_directory/`, 
-enter your password.
-Use gzip for large files for transfer between slow connections: `gzip py_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, or post your docker image to [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) as well and create the container form there. 
+### Docker Image Compatibility with Singularity
 
    ![Docker to singularity container (1)](https://github.com/kmihak/developWithDocker/assets/64592696/b463fa8d-eefc-411b-aa9e-e4252ebb732b)
-
    
    *How to go about creating docker image and deploy it on the Singularity server.*
+   
+After you are satisfied with docker image, save docker image to file: `docker save -o <pathToFile/py-min.tar> <fe35d0fd6c24>`
 
+Sync image to the server with singularity: ```
+rsync -avP <path/to_directory/img-min.tar> <username>@<server>:/home/user/path/to_directory/```
+, enter your password. Use gzip for large files for transfer between slow connections: `gzip img_min.tar`,  `rsync -avP <path/to_directory/py-min.tar.gz> <user>@<server>:/home/user/path/to_directory/`, or post your docker image to [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) as well and create the container form there. 
 
-   1. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<py-min.tar>`
-      - Replace <py-min.tar> with the desired name for your docker image file. This command does not require sudo to create .simg singularity image.
+   1. Build the Singularity Container from existing docker image: `singularity build <singularity_container.simg> docker-archive://<img-min.tar>`
+      - Replace <img-min.tar> with the desired name for your docker image file. This command does not require sudo to create .simg singularity image.
    2. **Use the proposed way of job scheduling when running the scripts in the server environment,** **https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima.** Run the Singularity Container: `singularity exec --nv <singularity_container.simg> python helloworld.py`
    Replace "path/to/your_container.simg" with the path to your Singularity container file and `your_script.py` with the name of your Python script. `--nv` flag gives singularity premissions to cuda. `singularity exec --nv your_container.simg python -c your_script.py`
 
@@ -151,13 +152,11 @@ Using a Singularity Definition File (e.g., `singularityfile.def`), pull the imag
    ```
 Create the .simg: `singularity build sPyCuda.simg singularityfile.def`. Using singularityfile.def requires singularity group priveleges (sudo). Again follow the rules of [job scheduling srce](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima) or [job scheduling orthus](https://hybridscale.github.io/orthus/running) both HPCs use SGE (Sons of Grid Engine) and execute some script from the created .simg: `singularity exec --nv <sPyCuda.simg> python <cnn_mnist.py>`
 
-### Jobs to Son of Grid Engine (SGE)
+### Jobs to Son of Grid Engine SGE
+Detailed descriptions of job scheduling for SGE in Croatian, how to run jobs with [CRO Son of Grid Engine](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima) and in English, how to run jobs with [ENG Son of Grid Engine](https://hybridscale.github.io/orthus/running)
 
-Croatian version how to run jobs with [CRO Son of Grid Engine](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima)
-English version how to run jobs with [ENG Son of Grid Engine](https://hybridscale.github.io/orthus/running)
-
-## Development in Remote Docker Containers (TBD)
-
+## Development in Remote Docker Containers TBD
+Remote docker container development using VSCODE on the fly. Coding in interactive containerized environment.
 ### Remote containers & SSH
 Step 1. 
 https://code.visualstudio.com/docs/remote/containers-tutorial
