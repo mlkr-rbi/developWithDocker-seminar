@@ -10,9 +10,9 @@
      - [Docker Image Compatibility with Singularity](#docker-image-compatibility-with-singularity)
      - [Jobs to Son of Grid Engine (SGE)](#Jobs-to-Son-of-Grid-Engine-sge)
    - [Development in Remote Docker Containers TBD](#development-in-remote-docker-containers-tbd)
-     - [Remote Containers and SSH](#remote-containers-and-ssh)
-     - [Collaborative Development with Remote Docker Containers](#collaborative-development-with-remote-docker-containers)
+     - [Remote Containers Preinstalation](#remote-containers-preinstalation)
      - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
+     - [Windows Working Example SSH](#windows-working-example-ssh)
      - [Security](#security)
 
 ## Install Docker (Locally, Linux, Windows, WSL2, Macintosh)
@@ -157,7 +157,8 @@ Detailed descriptions of job scheduling for SGE in Croatian, how to run jobs wit
 
 ## Development in Remote Docker Containers TBD
 Remote docker container development using VSCODE on the fly. Coding in interactive containerized environment.
-### Remote Containers and SSH
+
+### Remote Containers Preinstalation
 Step 1. 
 https://code.visualstudio.com/docs/remote/containers-tutorial
 vscode:extension/ms-vscode-remote.remote-containers 
@@ -165,13 +166,14 @@ vscode:extension/ms-vscode-remote.remote-containers
 Step 2. https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
 Getting started
 You can launch a new instance of VS Code connected to WSL by opening a WSL terminal, navigating to the folder of your choice, and typing code .: create a folder named .devcontainer in yout development environment.
-
+  
+### Windows Working Example SSH
 Step 3. SSH In VS Code, run `Remote-SSH: Open Configuration File`... in the Command Palette (F1), select an SSH config file, and add (or modify) a host entry as follows:
+```
 Host server.name.hr
   HostName server.name.hr
   User userName
-  
-#### Windows Working Example
+```
 Create key and transfer to server in cmd administrator privelages:
 In Powershell administrator privileges to upload: `ssh-keygen -t rsa -b 4096`
 
@@ -190,8 +192,7 @@ Host bea.zel.lo
   User mkeber
   IdentityFile ~/.ssh/id_rsa
 ```
-
-### Collaborative Development with Remote Docker Containers
+Check if SSH is working in your terminal and in VSCODE should connect you after: ssh <user>@server.name.hr without password.
 
 ### Developing in Remote Docker Environments
 Devcontainer.json files and documentation
