@@ -1,0 +1,35 @@
+{ "name": "ocr-files",
+  // Sets the run context to one level up 
+  // instead of the .devcontainer folder.
+  "context": "..",
+  // Update the 'dockerFile' property if you 
+  // aren't using the standard 'Dockerfile' filename.
+  "dockerFile": "../Dockerfile",
+  //"image": "<name>:<tag>",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": ["ms-vscode-remote.remote-containers",
+      "ms-python.python", "ms-toolsai.jupyter",
+      "ms-toolsai.jupyter-keymap", "ms-python.vscode-pylance",
+      "SBSnippets.pytorch-snippets", "donjayamanne.python-environment-manager",
+      "ms-vscode-remote.remote-ssh","ms-vscode-remote.remote-ssh-edit",
+      "ms-vscode-remote.vscode-remote-extensionpack",
+      "ms-vscode-remote.remote-wsl","GitHub.copilot-nightly",
+      "njpwerner.autodocstring"
+      ]
+      }
+    },
+
+  "remoteUser": "vscode",
+  "runArgs": [
+    "--gpus",
+    "all",
+    "--shm-size=8g",
+    "--rm" ],
+
+  "appPort": [
+    "8700:8700"],
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=/home/<user>/corpus/data,target=/workspace/data,type=bind,consistency=cached"
+  } 

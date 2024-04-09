@@ -1,0 +1,8 @@
+Sync rsync -avP <<user>@ada.zel.lo:/from/path> <<user>@snas.zel.lo:/to/path>
+rsync -avP ~/cnnsmi/res/2cls/reports/* <user>@snas.zel.lo:/volume1/mkeber/cnnsmi/res/2cls/reports/
+
+sync 2 snan PPI
+rsync -avP ~/ppi_causal_structure <user>@snas.zel.lo:/volume1/mkeber/ppi_causal_structure
+
+Sync to work folder:
+rsync -avP <user>@ada.zel.lo:/home/mkeber/cnnsmi/res/* .

@@ -1,0 +1,6 @@
+Bootstrap: docker
+From: <name>:<tag>
+
+%post
+    # Execute your script inside the container
+    python your_script.py

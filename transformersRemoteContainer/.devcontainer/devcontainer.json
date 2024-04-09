@@ -1,0 +1,36 @@
+{ "name": "nlp-transformer",  
+  // Sets the run context to one level up 
+  // instead of the .devcontainer folder.
+  "context": "..",
+  // Update the 'dockerFile' property if you 
+  // aren't using the standard 'Dockerfile' filename.
+  "dockerFile": "../Dockerfile",
+  // Make container from image use following line and comment "dockerFile":
+  // "image": "ig/ml:rm-gradcam",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": ["ms-vscode-remote.remote-containers",
+      "ms-python.python", "ms-toolsai.jupyter",
+      "ms-toolsai.vscode-jupyter-cell-tags",
+      "ms-toolsai.jupyter-renderers",
+      "ms-toolsai.jupyter-keymap", "ms-python.vscode-pylance",
+      "SBSnippets.pytorch-snippets", "donjayamanne.python-environment-manager",
+      "ms-vscode-remote.remote-ssh","ms-vscode-remote.remote-ssh-edit",
+      "ms-vscode-remote.vscode-remote-extensionpack",
+      "ms-vscode-remote.remote-wsl","GitHub.copilot-nightly",
+      "njpwerner.autodocstring","SBSnippets.pytorch-snippets"
+    ]}},
+  "remoteUser": "vscode",
+  "runArgs": ["--gpus", "all", "--shm-size=32g", "--rm" ],
+  "appPort": ["8944:8944"],
+  // Uncomment to use the Docker CLI from inside the container. 
+  // See https://aka.ms/vscode-remote/samples/docker-in-docker.
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=/home/<user>/bertic-electra,target=/workspace/bertic-electra,type=bind,consistency=cached",
+  // need to create "target" folder in Dockerfile and 
+  // mount it here from the existing "source" folder
+  "mounts": [{  "source": "/home/<user>/corpus/data", 
+                "target": "/workspace/data", "type": "bind"
+            }]
+} 

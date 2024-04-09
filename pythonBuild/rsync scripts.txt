@@ -1,0 +1,24 @@
+Sync reports 2cls
+rsync -avP ~/cnnsmi/res/2cls/reports/* mkeber@snas.zel.lo:/volume1/mkeber/cnnsmi/res/2cls/reports/
+
+sync images 2cls
+rsync -avP ~/cnnsmi/res/2cls/images/* mkeber@snas.zel.lo:/volume1/mkeber/cnnsmi/res/2cls/images/
+
+sync reports 3cls
+rsync -avP ~/cnnsmi/res/3cls/reports/* mkeber@snas.zel.lo:/volume1/mkeber/cnnsmi/res/3cls/reports/
+
+sync images 3cls
+rsync -avP ~/cnnsmi/res/3cls/images/* mkeber@snas.zel.lo:/volume1/mkeber/cnnsmi/res/3cls/images/
+
+sync 2 snan PPI
+rsync -avP ~/ppi_causal_structure mkeber@snas.zel.lo:/volume1/mkeber/ppi_causal_structure
+
+sync to D: windows from cygwin terminal
+navigate to folder: /mnt/d/ProjectExperiments/cnnsmi/res
+rsync -avP mkeber@bea.zel.lo:/home/mkeber/cnnsmi/res/* .
+
+i can try : 
+rsync -avP mkeber@ada.zel.lo:/home/mkeber/cnnsmi/res/* "/cygdrive/d/ProjectExperiments/cnnsmi/res"
+
+rsync -avP 192.168.2.31:/volume1/Public/Ivan/RM4DL/rm4dl-gradcam ~/rm4dl-gradcam
+
