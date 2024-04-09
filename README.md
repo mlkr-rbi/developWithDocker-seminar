@@ -10,7 +10,7 @@
      - [Docker Image Compatibility with Singularity](#docker-image-compatibility-with-singularity)
      - [Jobs to Son of Grid Engine (SGE)](#Jobs-to-Son-of-Grid-Engine-sge)
    - [Development in Remote Docker Containers TBD](#development-in-remote-docker-containers-tbd)
-     - [Remote Docker Development Environment Setup](#remote-docker-development-environment-setup)
+     - [Remote Containers and SSH](#remote-containers-and-ssh)
      - [Collaborative Development with Remote Docker Containers](#collaborative-development-with-remote-docker-containers)
      - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
      - [Security](#security)
