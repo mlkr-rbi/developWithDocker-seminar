@@ -8,6 +8,7 @@
    - [Docker Image and Singularity](#docker-image-and-singularity)
      - [Introduction to Singularity](#introduction-to-singularity)
      - [Docker Image Compatibility with Singularity](#docker-image-compatibility-with-singularity)
+     - [Jobs to Son of Grid Engine (SGE)](#Jobs-to-Son-of-Grid-Engine-(SGE))
    - [Development in Remote Docker Containers](#development-in-remote-docker-containers)
      - [Remote Docker Development Environment Setup](#remote-docker-development-environment-setup)
      - [Collaborative Development with Remote Docker Containers](#collaborative-development-with-remote-docker-containers)
@@ -149,12 +150,8 @@ Using a Singularity Definition File (e.g., `singularityfile.def`), pull the imag
        python your_script.py
    ```
 Create the .simg: `singularity build sPyCuda.simg singularityfile.def`. Using singularityfile.def requires singularity group priveleges (sudo). Again follow the rules of [job scheduling srce](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima) or [job scheduling orthus](https://hybridscale.github.io/orthus/running) both HPCs use SGE (Sons of Grid Engine) and execute some script from the created .simg: `singularity exec --nv <sPyCuda.simg> python <cnn_mnist.py>`
-   
 
-
-
-
-## Jobs to Son of Grid Engine (SGE)
+### Jobs to Son of Grid Engine (SGE)
 
 Croatian version how to run jobs with [CRO Son of Grid Engine](https://wiki.srce.hr/display/RKI/Pokretanje+i+upravljanje+poslovima)
 English version how to run jobs with [ENG Son of Grid Engine](https://hybridscale.github.io/orthus/running)
