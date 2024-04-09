@@ -1,6 +1,6 @@
 # Develop With Docker
 ## Table of Contents
-   - [Install Docker (Locally, Linux, ...)](#install-docker-(locally,-linux,-windows,-WSL2,-macintosh))
+   - [Install Docker (Locally, Linux, ...)](#install-docker-locally,-linux,-windows,-WSL2,-macintosh)
    - [Building a Docker Image](#building-a-docker-image)
      - [Basic Docker Commands](#basic-docker-commands)
      - [Building a Simple Docker Image](#building-a-simple-docker-image)
@@ -15,7 +15,7 @@
      - [Developing in Remote Docker Environments](#developing-in-remote-docker-environments)
      - [Security](#security)
 
-## Install Docker (Locally, Linux, Windows, WSL2, Macintosh)
+## Install Docker Locally, Linux, Windows, WSL2, Macintosh
 Follow the tutorial to install on your machine: 
 - Linux - https://docs.docker.com/engine/install/ubuntu/,
 - Windows Docker Desktop -  https://docs.docker.com/desktop/install/windows-install/
