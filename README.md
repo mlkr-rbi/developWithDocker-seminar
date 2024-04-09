@@ -28,11 +28,24 @@ for group permissions. For complete server names checkout the department wiki pa
 
 ## Building a Docker Image
 Docker image is the first step to create your fully reproducible environment. Basic setup is by using `Dockerfile`. 
-   - Dockerfile contains procedure/code to build a docker image, 
-   - Examples of minimal Dockerfile files are in this GitHub repository.
+   - Dockerfile contains procedure/code to build a docker image, minimal dockerfile example
+   ```
+FROM python:3.8.18-slim-bullseye
+# Set the working directory in the container
+WORKDIR /workspace
+# Linux dependencies
+RUN apt-get update && \
+  apt-get install -y build-essential sudo unzip bzip2
+# Copy the Python script into the container
+COPY . /workspace
+# update and install packages in python
+RUN pip install --upgrade pip && \
+  pip install -r req.txt
+```
+
+   - Examples of Dockerfile files dependent on your preferences are in this GitHub repository.
    ![create virtual image](https://github.com/kmihak/developWithDocker/assets/64592696/0bdf12e7-08c6-48e3-b0a2-f9da519d3699)
 
-   
    *At what point are docker and singularity commands applied and what do they create.*
    
 Docker images are located online on [docker hub](https://hub.docker.com/r/pytorch/pytorch/tags) repository. After logging in, you can upload your image as well. In order to create an image we use **Dockerfile** and a set of standard commands. Understanding the **Dockerfile** syntax and commands:
