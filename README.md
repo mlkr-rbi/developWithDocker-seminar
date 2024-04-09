@@ -157,7 +157,7 @@ Detailed descriptions of job scheduling for SGE in Croatian, how to run jobs wit
 
 ## Development in Remote Docker Containers TBD
 Remote docker container development using VSCODE on the fly. Coding in interactive containerized environment.
-### Remote containers & SSH
+### Remote Containers and SSH
 Step 1. 
 https://code.visualstudio.com/docs/remote/containers-tutorial
 vscode:extension/ms-vscode-remote.remote-containers 
@@ -166,16 +166,17 @@ Step 2. https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vsc
 Getting started
 You can launch a new instance of VS Code connected to WSL by opening a WSL terminal, navigating to the folder of your choice, and typing code .: create a folder named .devcontainer in yout development environment.
 
-Step 3. SSH In VS Code, run Remote-SSH: Open Configuration File... in the Command Palette (F1), select an SSH config file, and add (or modify) a host entry as follows: Add to config file:
-Host bea.zel.lo
-  HostName bea.zel.lo
-  User mkeber
-
+Step 3. SSH In VS Code, run `Remote-SSH: Open Configuration File`... in the Command Palette (F1), select an SSH config file, and add (or modify) a host entry as follows:
+Host server.name.hr
+  HostName server.name.hr
+  User userName
+  
+#### Windows Working Example
 Create key and transfer to server in cmd administrator privelages:
 In Powershell administrator privileges to upload: `ssh-keygen -t rsa -b 4096`
 
 ```
-$USER_AT_HOST="username@bea.zel.lo"
+$USER_AT_HOST="username@server.name.hr"
 $PUBKEYPATH="$HOME\.ssh\id_rsa.pub"
 
 $pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '${pubKey}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
