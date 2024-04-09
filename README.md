@@ -187,16 +187,15 @@ $pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p 
 Add to config file:
 In VS Code, run Remote-SSH: Open Configuration File... use F1 button to open.
 ```
-Host bea.zel.lo
-  HostName bea.zel.lo
-  User mkeber
+Host server.name.hr
+  HostName server.name.hr
+  User userName
   IdentityFile ~/.ssh/id_rsa
 ```
 Check if SSH is working in your terminal and in VSCODE should connect you after: ssh <user>@server.name.hr without password.
 
 ### Developing in Remote Docker Environments
-Devcontainer.json files and documentation
-Make separate directory “start_project” with files req.txt and Dockerfile and a directory “.devcontainer“ containing file devcontainer.json 
+Make separate directory "start_project" with files req.txt and Dockerfile and a directory "/.devcontainer" containing file devcontainer.json 
 Examples in the GitHub repository.
    
 Documentation for devcontainer.json:
