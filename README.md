@@ -28,6 +28,8 @@ for group permissions. For complete server names checkout the department wiki pa
 
 ## Building a Docker Image
 Docker image is the first step to create your fully reproducible environment. Basic setup is by using `Dockerfile`. 
+   - How to build a safe - use images from renown repositories
+   - How to build reproducible images from dockerfile (use virtual environment)
    - Dockerfile contains procedure/code to build a docker image, minimal dockerfile example
    ```
 FROM python:3.8.18-slim-bullseye
